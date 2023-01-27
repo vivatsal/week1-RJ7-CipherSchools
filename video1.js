@@ -1,14 +1,14 @@
-const name1 = "Rishi";
+const name1 = "Viven";
 console.log(name1);
 
-let name2 = "Rishi";
+let name2 = "Viven";
 name2 = "John";
 console.log(name2);
 
 //String Interpolation
 
-let firstName = "Rishi";
-let lastName = "Pathania";
+let firstName = "Viven";
+let lastName = "Vatsal";
 
 let fullName = `${firstName} ${lastName}`;
 console.log(fullName);
@@ -46,11 +46,11 @@ console.log(maximumNumber(13,25,13,525,53,535,224,636,363));
 //Objects in Javascript:
 
 let object = {
-    name: "Rishi",
+    name: "Viven",
     age: 20,
     address: {
-        city: "Palampur",
-        state: "Himachal Pradesh",
+        city: "Muzaffarpur",
+        state: "Bihar",
         country: "India"
     }
 };
@@ -58,10 +58,10 @@ let object = {
 let object2 = {...object};
 console.log(object2);
 
-object2.address.city = "Kangra";
+object2.address.city = "Muzaffarpur";
 console.log(object);
 
 object2 = JSON.parse(JSON.stringify(object));
-object2.address.city = "Dharamshala";
+object2.address.city = "Mfp";
 console.log(object);
 console.log(object2);
