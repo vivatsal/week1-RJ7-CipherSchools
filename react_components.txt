@@ -1,0 +1,110 @@
+React Components | Rendering Arrays | Map List | Keys 
+-----------------------------------------------------------------------
+Like if we say 
+
+App 
+ |
+if condition 	(login time <10hr)
+ |
+Home (when we are in home the user must get the latest feed , messages and all things ;)
+ |
+
+
+Remember every component has life cycle : life cycle means 
+when component will load that will be : mount ;
+when the component is updated that will be : update state 
+when component work is done that will be : unmounting ;
+
+Like if we are on feed page : and we click on messages so feed page component will be unmounted and messages page will be mounted this is how it works;
+
+-----------------------------------------------------------------------
+Advantages of writing code as components : like if we write codes in components then , it will be easy to re-iterate the codes again and again ;
+
+With the help of components : we can divide our work in small small components : 
+like navbar will be one component , messgaes will be one component , main feed section will be one component , uploading post area will be one componnet , like in twitter right hand side trending section is one component ;
+and combination of all of these creates a page ;
+
+We can see when we are on feed page and if we click on messages page will not load again just change the contents;
+
+		LinkedIn App
+		/		\
+	  navbar	page
+	  			 \
+	  			 Homepage
+
+	  	   LinkedIn App
+		/		\
+	  navbar	page
+	  			 \
+	  			 messagePage
+
+Now if we see here if we want to jump from Homepage to messagePage then only the nodes are being changed and others remains the same .... so that's why it is faster and effcient ;
+
+More we break the components into small small parts more will be the power in our hand 
+
+
+
+------------------------------------------------------------------------------------
+-----------------------------------------------------------------------
+In class based components : in the component which is the parent class and test is the child class which inherit all the functionalities from component class
+
+class Test extends Component{
+	
+}
+
+here Component class is very much heavy because it contains lots of members in it so it is heavy and takes time so it can create many memory issue ; its has more extra functionalities which even we don't need 
+
+for example : in resturant you went to eat 2 rotis and 1 panner plate but resturant given you 5 roti and 2 plate pf panner . still you can eat 2 rotis and 1 panner plate but reamining will be wastage of food similarly componnets has lots of functionalities which we don't need so it waste the memory ;
+
+Thats is why we don't use class based components : but class based components are also powerful :
+Functional components are light-weight : they give only those which you will call/want;
+
+Functional components are not powerful as Class based components : to make it as powerful "hooks" are introduced in functional components ;
+
+So to bring the power of class based components to functional components we have hooks;
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Topic : conditional rendering ;
+
+Now if we want some conditional operators note : that we cannot use if-else things in JSX file rather we will use ternary operator to check for conditions ;
+
+import React from 'react'
+export default function App() {
+
+  let isLogged = false;
+  return (
+    <>
+      <div>
+        {
+          isLogged ? <h1>Hey you are logged in</h1> : <h1>Hey you are not logged in</h1>
+        }
+      </div>
+    </>
+  )
+}
+
+this is how we can write ternary operators ;
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+import React from 'react'
+export default class App extends React.Component {
+
+  state = { isLogged: false };
+  render() {
+    return (
+      <div>
+        {
+          this.state.isLogged ? (<h1>Congratulations ,you are logged in</h1>) : (<h1>Hey you are not logged in</h1>)
+        }
+        <button onClick={(e) => this.setState({ isLogged: true })}>Click</button>
+      </div>
+    )
+  }
+}
+
+
+Remember Hooks are not allowed in class based components : it is only applicable for functional components ;
+

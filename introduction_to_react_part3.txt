@@ -1,0 +1,198 @@
+Introduction to react | virtual dom| part - 1 ;
+----------------------------------------------------------------------
+npm start 
+we can use this to start the react file ;
+
+anywhere if we see html looking like codes in React so that will be JSX not html .
+
+----------------------------------------------------------------------
+like in actual we write many multiple js files like : App.js , index.js , components.js but on our web broswer all Js files will be bundled by Babel into one and broswer will get "bundle.js";
+and we can see that in inspect ;
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+-----index.js-----
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+// import './index.css';
+import App from './App';
+// import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+);
+
+here we are accessing <App/> and everything is rendered in root which is mentioned in index.html file in public folder ; that div has id "root";
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+What is a component ?
+A component either a function or class in react 
+-> A piece of JSX which can be used at multiple places ; so that we can call that function ;
+Like if we made a component like navbar and we have to call that navbar 10 times so it will be very easy  by making components ;
+That's the beauty of React ;
+
+----------------------------------------------------------------------
+A component can be a function or class ;
+
+What is html elements and react components/react elements 
+
+ <div>
+            <h1>Hello Rahul</h1>
+        </div>
+
+        here if we see div this div is an HTML element but if we see :
+
+<React.StrictMode>
+        <App />
+    </React.StrictMode>
+
+here <App/> is not an HTML element it is customised so this is called as React components/react elements ;
+
+So react elements : are combination of html elements + react components ;
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Assume there is a tree whose every part is replacable or removable :
+Now if we are removing a leaf then only that leaf will be removed but , if we remove a branch then entire branch and sub-branch and their leafs will be removed ;
+
+Similar thing is happpening is react also : react also has a component tree ; 
+so if somethng is changed then that part like that leaf is changed not the entire branch ;
+this is the concept of react which also makes it much faster as compared to others ;
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Topic : React Reconsilation 
+suppose there is a structured code like as mentioned below ;
+
+ return (
+        <div>
+            <h1>Hello Rahul</h1>
+            <h2>Hello Rahul</h2>
+
+        </div>
+    )
+}
+
+here structure is like 
+
+			div
+		   /   \
+		  h1    h2
+		now if we change the div to section 
+
+ return (
+        <section>
+            <h1>Hello Rahul</h1>
+            <h2>Hello Rahul</h2>
+
+        </section>
+    )
+}
+
+		 section
+		/      \
+		h1     h2
+here entire thing is changed since the parent thing itself changed this is called react consilation 
+but if the node like h2 or h1 is changed then its okay that is why react is so faster because it changes only which is needed not the entire ;
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+export default function App() {
+    return (
+        <div>
+            <Header/>
+            <Header/>
+            <Header/>
+            <Header/>	//here we want change
+        </div>
+    )
+}
+
+here in this code if we want to change something in 4th <header/>
+then react will not able to locate exactly where to change 
+so it will look for key which will only locate that thing . 
+
+So if a parent has many childrens of same type then there must be unique keys for each so to identify easily and do changes if important ; 
+
+export default function App() {
+    return (
+        <div>
+            <Header key={1}/>
+            <Header key={2}/>
+            <Header key={3}/>
+            <Header key={4}/>
+        </div>
+    )
+}
+
+now here by giving key it will be easy to locate anything ;
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Topic : Styling methods ;
+
+Inheritance : ALl the properties of parent come to its child ;
+
+Now we can write the class components also ;
+--------code-------
+import React from "react";
+
+class App extends React.Component() {
+
+    render() {
+        return (
+            <>
+
+            </>
+        )
+    }
+}
+export default App;
+
+this is how class components is written ;
+
+----------------------------------------------------------------------
+Topic : Styling methods ;
+Now as we know to use CSS file we can use Inline , Internal , external CSS ;
+like here in react ; writing Internal CSS 
+
+import React from "react";
+
+class App extends React.Component() {
+
+
+    render() {
+        return (
+            <style>
+        h1{
+            
+        }
+    </style>
+            <>
+
+            </>
+        )
+    }
+}
+export default App;
+it will show an error becoz in HTML we were able to write using style but this is not HTML this is JSX we have to follow the syntax rules ;
+
+It is possible to write inline CSS but in different manner let see ;
+
+  render() {
+        return (
+
+            <>
+                <h1 style={{backgroundClor:"red"}}></h1>
+            </>
+        )
+    }
+}
+this is how we are able to write inline CSS with double curly braces {{}};
+----------------------------------------------------------------------
+And we can use external CSS also : so better way to do that is offcourse external CSS;
